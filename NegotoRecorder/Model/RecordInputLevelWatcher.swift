@@ -34,7 +34,7 @@ class RecordInputLevelWatcher {
     
     func startWatch(){
         print("start watching")
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { t in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { t in
             let meterValue = self.recorder.getMeterValue()
             if meterValue > self.threshhold {
                 if !self.isRecording {
@@ -63,17 +63,14 @@ class RecordInputLevelWatcher {
         print("deactivate record")
         self.isRecording = false
         guard var interval = self.audioActivatedInterval else {return}
-        interval.endTime = self.recorder.getCurrentTime() ?? -1
+        interval.endTime = self.recorder.getCurrentTime()
+        print("endTime = " + interval.endTime!.description)
         self.audioActivatedIntervalRecord.append(interval)
         self.audioActivatedInterval = nil
     }
     
     func exportRecord() -> [AudioActivatedInterval] {
-        if var interval = self.audioActivatedInterval {
-            interval.endTime = self.recorder.getCurrentTime() ?? -1
-            self.audioActivatedIntervalRecord.append(interval)
-            self.audioActivatedInterval = nil
-        }
+        print("exportRecord")
         return self.audioActivatedIntervalRecord
     }
 }

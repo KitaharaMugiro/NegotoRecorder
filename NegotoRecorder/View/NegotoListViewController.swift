@@ -25,22 +25,23 @@ class NegotListViewController: UIViewController {
         return view
     }()
     
-    var audioPlayer = AudioPlayer()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(titleView.getView())
         tableView.addMySelfToViewCompletely(view: self.view)
-        self.audioPlayer.setDelegate(delegate: self, audioDelegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("negoto list view will appear")
         //DBからレコードを取得する
         let repository = AudioRecordRepository()
         let files = repository.getAllAudioRecords()
+        self.records = []
         for file in files {
             self.records += file.intervals
         }
+        self.tableView.update()
     }
     
     override func viewDidLayoutSubviews() {
@@ -79,17 +80,22 @@ extension NegotListViewController: UITableViewDataSource {
         let cellId = String(format: "cell%d", type.rawValue)
         var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
         
+        cell = EMTNeumorphicTableCell(style: .default, reuseIdentifier: cellId) //毎回セルを作る
         if cell == nil {
             cell = EMTNeumorphicTableCell(style: .default, reuseIdentifier: cellId)
         }
         
         if let cell = cell as? EMTNeumorphicTableCell {
+            /**ここでAudioPlayerを宣言すると死んでしまう*/
+            let audioPlayer = AudioPlayer()
+            audioPlayer.setDelegate(delegate: self, audioDelegate: self)
             
             let _cell = NegotoCell()
             _cell.data =  NegotoCellData(title: "test", date: Date(), negotoId: data.id, fileName: "recording.m4a", interval: data)
+            
+            _cell.setPlayer(audioPlayer)
             cell.addSubview(_cell)
             _cell.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.bottomAnchor, right: cell.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-            _cell.setPlayer(audioPlayer)
             cell.height(150)
             cell.neumorphicLayer?.cornerType = type
             cell.selectionStyle = .none;
@@ -109,6 +115,4 @@ extension NegotListViewController: AudioPlayerDelegate, AVAudioPlayerDelegate {
     func onFailPlay() {
         print("onFailPlay")
     }
-    
-    
 }

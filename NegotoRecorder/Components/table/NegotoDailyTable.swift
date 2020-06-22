@@ -31,4 +31,8 @@ class NegotoDailyTable  {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant:-20).isActive = true
      }
+    
+    func update() {
+        self.tableView.reloadData()
+    }
 }

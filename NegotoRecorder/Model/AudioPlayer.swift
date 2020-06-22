@@ -70,4 +70,8 @@ class AudioPlayer {
     func pause() {
         self.audioPlayer.pause()
     }
+    
+    func description() {
+        print("START_TIME:\(self.START_TIME), END_TIME:\(self.END_TIME)")
+    }
 }

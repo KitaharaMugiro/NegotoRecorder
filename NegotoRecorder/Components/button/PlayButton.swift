@@ -11,7 +11,7 @@ import UIKit
 import EMTNeumorphicView
 class PlayButton  {
     var button : EMTNeumorphicButton
-    weak var player : AudioPlayer?
+    var player : AudioPlayer?
     
     init() {
         let button = EMTNeumorphicButton(type: .custom)
@@ -41,6 +41,9 @@ class PlayButton  {
     @objc func tapped(_ button: EMTNeumorphicButton) {
         button.isSelected = !button.isSelected
         if button.isSelected {
+            print("button is tapped and selected")
+            print(self.player)
+            self.player?.description()
             player?.play()
             let value:CGFloat = 10
             button.imageEdgeInsets = UIEdgeInsets(top: value, left: value, bottom: value, right: value+5)
@@ -52,6 +55,8 @@ class PlayButton  {
     }
     
     func setPlayer(_ player: AudioPlayer) {
+        print("setPlayer from PlayButton")
         self.player = player
+        print(self.player)
     }
 }

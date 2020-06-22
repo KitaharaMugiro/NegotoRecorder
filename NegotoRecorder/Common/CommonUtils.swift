@@ -13,6 +13,15 @@ class CommonUtils {
         return paths[0]
     }
     
+    static func removeFileIfExists(fileName:String) {
+        let path = getDocumentsDirectory().appendingPathComponent(fileName)
+        do {
+            try FileManager.default.removeItem(at: path)
+        } catch let error as NSError {
+            print("File Delete: \(error.domain)")
+        }
+    }
+    
     static func getFileURL(fileName:String) -> URL {
         let path = getDocumentsDirectory().appendingPathComponent(fileName)
         return path as URL

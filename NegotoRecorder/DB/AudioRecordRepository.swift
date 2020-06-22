@@ -40,6 +40,11 @@ class AudioRecordRepository {
     }
     
     func setAudioRecord(fileName:String, records: [AudioActivatedInterval]) {
+        print(records.count.description + "のレコードが保存されました。")
+        for record in records {
+            print(record.startTime.description + " - " + record.endTime!.description)
+        }
+        
         let audioRecordRealm = AudioRecordRealm()
         let uuid = UUID().uuidString
         audioRecordRealm.id = uuid

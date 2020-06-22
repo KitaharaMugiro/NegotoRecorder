@@ -29,6 +29,7 @@
 		35A741B6249F5D29002417F1 /* RecordInputLevelWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A741B5249F5D29002417F1 /* RecordInputLevelWatcher.swift */; };
 		35A741BA249F8EF8002417F1 /* AudioRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A741B9249F8EF8002417F1 /* AudioRecordRepository.swift */; };
 		35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */; };
+		35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */; };
 		72774414FFE36F181EC1B1DC /* Pods_NegotoRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		35A741B5249F5D29002417F1 /* RecordInputLevelWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInputLevelWatcher.swift; sourceTree = "<group>"; };
 		35A741B9249F8EF8002417F1 /* AudioRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordRepository.swift; sourceTree = "<group>"; };
 		35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordViewModel.swift; sourceTree = "<group>"; };
+		35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrimmer.swift; sourceTree = "<group>"; };
 		5220E444F9058C458C0E8897 /* Pods-NegotoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.debug.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NegotoRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6869BB17E2BF69B33FCDADC /* Pods-NegotoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.release.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				35A741A2249F2B62002417F1 /* AudioRecorder.swift */,
 				35A741A4249F2F32002417F1 /* AudioPlayer.swift */,
 				35A741B5249F5D29002417F1 /* RecordInputLevelWatcher.swift */,
+				35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				35A741B6249F5D29002417F1 /* RecordInputLevelWatcher.swift in Sources */,
 				35A741A3249F2B62002417F1 /* AudioRecorder.swift in Sources */,
 				3501A71C249AE6310098322E /* AppDelegate.swift in Sources */,
+				35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */,
 				35A7419C249CA950002417F1 /* AppTitleLabel.swift in Sources */,
 				35A741B4249F4FE1002417F1 /* PlayButton.swift in Sources */,
 				35A741A7249F2F92002417F1 /* CommonUtils.swift in Sources */,

@@ -65,7 +65,8 @@ class NegotoCell : UITableViewCell {
     
     func setPlayer(_ player: AudioPlayer) {
         guard let d = data else {return}
-        player.preparePlay(fileName: d.fileName)
+        print("setPlayer from NegotoCell")
+        player.preparePlay(fileName: d.fileName, START_TIME: d.interval.startTime, END_TIME: d.interval.endTime)
         self.playButton.setPlayer(player)
     }
     
