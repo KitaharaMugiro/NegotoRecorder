@@ -1,0 +1,6 @@
+framework module NeumorphismTab {
+  umbrella header "NeumorphismTab-umbrella.h"
+
+  export *
+  module * { export * }
+}
