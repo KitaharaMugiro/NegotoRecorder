@@ -14,7 +14,7 @@ protocol AudioPlayerDelegate:class  {
 
 class AudioPlayer {
     var recordingSession: AVAudioSession!
-    var audioPlayer:AVAudioPlayer!
+    var audioPlayer:AVAudioPlayer?
     
     weak var delegate : AudioPlayerDelegate?
     weak var audioDelegate : AVAudioPlayerDelegate?
@@ -33,27 +33,23 @@ class AudioPlayer {
         self.END_TIME = END_TIME
         self.START_TIME = START_TIME
         
-        var error: NSError?
         do {
+            print("open = \(CommonUtils.getFileURL(fileName: fileName))")
             audioPlayer = try AVAudioPlayer(contentsOf: CommonUtils.getFileURL(fileName: fileName) as URL)
-        } catch let error1 as NSError {
-            error = error1
-            audioPlayer = nil
-        }
-        
-        if let err = error {
-            print("AVAudioPlayer error: \(err.localizedDescription)")
+        } catch let error as NSError {
+            print("AVAudioPlayer error: \(error.localizedDescription)")
             self.delegate?.onFailPlay()
-        } else {
-            audioPlayer.delegate = self.audioDelegate
-            audioPlayer.prepareToPlay()
-            audioPlayer.currentTime = START_TIME
-            audioPlayer.volume = 10.0
         }
+
+        audioPlayer?.delegate = self.audioDelegate
+        audioPlayer?.prepareToPlay()
+        audioPlayer?.currentTime = START_TIME
+        audioPlayer?.volume = 10.0
+    
     }
     
     func play() {
-        self.audioPlayer.play()
+        self.audioPlayer?.play()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.checkTime()
         }
@@ -61,14 +57,15 @@ class AudioPlayer {
     
     private func checkTime() {
         guard let endTime = END_TIME else {return}
-        if self.audioPlayer.currentTime > endTime {
-            self.audioPlayer.currentTime = START_TIME
+        guard let audioPlayer = self.audioPlayer else {return}
+        if audioPlayer.currentTime > endTime {
+            audioPlayer.currentTime = START_TIME
             self.pause()
         }
     }
     
     func pause() {
-        self.audioPlayer.pause()
+        self.audioPlayer?.pause()
     }
     
     func description() {

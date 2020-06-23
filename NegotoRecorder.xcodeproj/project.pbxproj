@@ -30,6 +30,11 @@
 		35A741BA249F8EF8002417F1 /* AudioRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A741B9249F8EF8002417F1 /* AudioRecordRepository.swift */; };
 		35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */; };
 		35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */; };
+		35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */; };
+		35D7DC2D24A1C1CC00296BD1 /* BackgroundUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2C24A1C1CC00296BD1 /* BackgroundUtils.swift */; };
+		35D7DC2F24A1C48100296BD1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2E24A1C48100296BD1 /* Constants.swift */; };
+		35D7DC3124A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */; };
+		35D7DC3324A264DA00296BD1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3224A264DA00296BD1 /* InfoButton.swift */; };
 		72774414FFE36F181EC1B1DC /* Pods_NegotoRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +64,11 @@
 		35A741B9249F8EF8002417F1 /* AudioRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordRepository.swift; sourceTree = "<group>"; };
 		35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordViewModel.swift; sourceTree = "<group>"; };
 		35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrimmer.swift; sourceTree = "<group>"; };
+		35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizer.swift; sourceTree = "<group>"; };
+		35D7DC2C24A1C1CC00296BD1 /* BackgroundUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUtils.swift; sourceTree = "<group>"; };
+		35D7DC2E24A1C48100296BD1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizeTaskHandler.swift; sourceTree = "<group>"; };
+		35D7DC3224A264DA00296BD1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		5220E444F9058C458C0E8897 /* Pods-NegotoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.debug.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NegotoRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6869BB17E2BF69B33FCDADC /* Pods-NegotoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.release.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +163,8 @@
 				35A74194249B6F61002417F1 /* MyColors.swift */,
 				35A741A6249F2F92002417F1 /* CommonUtils.swift */,
 				35A741B1249F49F5002417F1 /* Extensions.swift */,
+				35D7DC2C24A1C1CC00296BD1 /* BackgroundUtils.swift */,
+				35D7DC2E24A1C48100296BD1 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -181,6 +193,7 @@
 			children = (
 				35A74197249CA5D9002417F1 /* RecordButton.swift */,
 				35A741B3249F4FE1002417F1 /* PlayButton.swift */,
+				35D7DC3224A264DA00296BD1 /* InfoButton.swift */,
 			);
 			path = button;
 			sourceTree = "<group>";
@@ -192,6 +205,8 @@
 				35A741A4249F2F32002417F1 /* AudioPlayer.swift */,
 				35A741B5249F5D29002417F1 /* RecordInputLevelWatcher.swift */,
 				35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */,
+				35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */,
+				35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,10 +359,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */,
 				35A741AA249F373F002417F1 /* NegotoListViewController.swift in Sources */,
 				35A741BA249F8EF8002417F1 /* AudioRecordRepository.swift in Sources */,
 				35A741B0249F477E002417F1 /* NegotoCell.swift in Sources */,
 				35A741AC249F37A0002417F1 /* HeaderLabel.swift in Sources */,
+				35D7DC2D24A1C1CC00296BD1 /* BackgroundUtils.swift in Sources */,
 				35A741B6249F5D29002417F1 /* RecordInputLevelWatcher.swift in Sources */,
 				35A741A3249F2B62002417F1 /* AudioRecorder.swift in Sources */,
 				3501A71C249AE6310098322E /* AppDelegate.swift in Sources */,
@@ -357,14 +374,17 @@
 				35A741A7249F2F92002417F1 /* CommonUtils.swift in Sources */,
 				35A74195249B6F61002417F1 /* MyColors.swift in Sources */,
 				3501A732249AEC6B0098322E /* FirstViewControllerProvider.swift in Sources */,
+				35D7DC3124A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift in Sources */,
 				35A74198249CA5D9002417F1 /* RecordButton.swift in Sources */,
 				3501A71E249AE6310098322E /* SceneDelegate.swift in Sources */,
 				35A741B2249F49F5002417F1 /* Extensions.swift in Sources */,
 				35A741A5249F2F32002417F1 /* AudioPlayer.swift in Sources */,
 				3501A734249AEC940098322E /* RecordViewController.swift in Sources */,
+				35D7DC3324A264DA00296BD1 /* InfoButton.swift in Sources */,
 				35A741AE249F381E002417F1 /* NegotoDailyTable.swift in Sources */,
 				35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */,
 				3501A736249AED520098322E /* NeumorphismTabViewController.swift in Sources */,
+				35D7DC2F24A1C48100296BD1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

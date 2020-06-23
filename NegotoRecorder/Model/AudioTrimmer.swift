@@ -10,18 +10,18 @@ import Foundation
 import AVFoundation
 
 class AudioTrimmer {
-    func trimAudio(asset: AVAsset, startTime: Double, stopTime: Double, finished:@escaping (URL) -> ())
+    func trimAudio(asset: AVAsset, startTime: Double, stopTime: Double, fileName:String, finished:@escaping (URL) -> ())
     {
-
+            print("start trimAudio")
             let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith:asset)
-
-            if compatiblePresets.contains(AVAssetExportPresetMediumQuality) {
-
+            
+            if !compatiblePresets.contains(AVAssetExportPresetMediumQuality) {
+                fatalError("なぜかトリミングできません")
+            }
+            
             guard let exportSession = AVAssetExportSession(asset: asset,
-            presetName: AVAssetExportPresetAppleM4A) else{return}
-
+            presetName: AVAssetExportPresetAppleM4A) else { return }
             // Creating new output File url and removing it if already exists.
-            let fileName = "trimmedAudio.m4a"
             let furl = CommonUtils.getFileURL(fileName: fileName)
             CommonUtils.removeFileIfExists(fileName: fileName) 
 
@@ -34,7 +34,6 @@ class AudioTrimmer {
             exportSession.timeRange = range
 
             exportSession.exportAsynchronously(completionHandler: {
-
                 switch exportSession.status {
                 case .failed:
                     print("Export failed: \(exportSession.error!.localizedDescription)")
@@ -47,6 +46,6 @@ class AudioTrimmer {
                     })
                 }
             })
-        }
+        
     }
 }

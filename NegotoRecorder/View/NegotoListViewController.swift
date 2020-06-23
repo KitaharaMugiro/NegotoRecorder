@@ -86,14 +86,13 @@ extension NegotListViewController: UITableViewDataSource {
         }
         
         if let cell = cell as? EMTNeumorphicTableCell {
-            /**ここでAudioPlayerを宣言すると死んでしまう*/
             let audioPlayer = AudioPlayer()
-            audioPlayer.setDelegate(delegate: self, audioDelegate: self)
+            //audioPlayer.setDelegate(delegate: self, audioDelegate: self)
             
             let _cell = NegotoCell()
-            _cell.data =  NegotoCellData(title: "test", date: Date(), negotoId: data.id, fileName: "recording.m4a", interval: data)
-            
+            _cell.data =  NegotoCellData(title: data.title, date: Date() , negotoId: data.id, fileName: data.filename)
             _cell.setPlayer(audioPlayer)
+            
             cell.addSubview(_cell)
             _cell.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.bottomAnchor, right: cell.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
             cell.height(150)
@@ -109,10 +108,4 @@ extension NegotListViewController: UITableViewDataSource {
 
 extension NegotListViewController: UITableViewDelegate {
     
-}
-
-extension NegotListViewController: AudioPlayerDelegate, AVAudioPlayerDelegate {
-    func onFailPlay() {
-        print("onFailPlay")
-    }
 }

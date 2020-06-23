@@ -14,7 +14,6 @@ struct NegotoCellData {
     var date: Date
     var negotoId: String
     var fileName : String
-    var interval : ActivatedIntervalViewModel
 }
 
 class NegotoCell : UITableViewCell {
@@ -63,11 +62,13 @@ class NegotoCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /** この形だとTableViewのCellのように容易に廃棄されるviewではplayerが孤立する */
     func setPlayer(_ player: AudioPlayer) {
         guard let d = data else {return}
         print("setPlayer from NegotoCell")
-        player.preparePlay(fileName: d.fileName, START_TIME: d.interval.startTime, END_TIME: d.interval.endTime)
+        //you need to call setPlayer first before preparePlay because of delegate
         self.playButton.setPlayer(player)
+        player.preparePlay(fileName: d.fileName)
     }
     
 }

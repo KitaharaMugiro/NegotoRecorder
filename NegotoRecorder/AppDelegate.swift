@@ -12,18 +12,22 @@ import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    let taskHandler : AudioRecognizeTaskHandler = AudioRecognizeTaskHandler()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.deleteAll()
-//        }
+        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        let realm = try! Realm(configuration:config)
+        try! realm.write {
+            realm.deleteAll()
+        }
         return true
     }
-
+    
+    func startProcessAudioRecognition() {
+        print("start background audio recognition")
+        taskHandler.processAudioRecognition()
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-//recordのinput levelを0.1秒ごとに監視する
+//recordのinput levelを1秒ごとに監視する
 //threshholdを超えたら記録を開始する
 //threshholdを下回ったらそこで記録を終了する
 //開始時間と終了時間をペアで持っておく
@@ -16,9 +16,11 @@ import Foundation
 struct AudioActivatedInterval {
     var startTime: Double
     var endTime : Double? = nil
+    var id : String = UUID().uuidString
 }
 
 class RecordInputLevelWatcher {
+    private let watchInterval:TimeInterval = 1
     private var threshhold:Float = 100 //db ここどうやって決めたらいいんだろう
     private var isRecording = false
     
@@ -34,7 +36,7 @@ class RecordInputLevelWatcher {
     
     func startWatch(){
         print("start watching")
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { t in
+        self.timer = Timer.scheduledTimer(withTimeInterval: watchInterval, repeats: true) { t in
             let meterValue = self.recorder.getMeterValue()
             if meterValue > self.threshhold {
                 if !self.isRecording {
@@ -56,21 +58,23 @@ class RecordInputLevelWatcher {
     private func activateRecord() {
         print("activate record")
         self.isRecording = true
-        self.audioActivatedInterval = AudioActivatedInterval(startTime: self.recorder.getCurrentTime() ?? -1)
+        let startTime = max(self.recorder.getCurrentTime() - watchInterval, 0)
+        self.audioActivatedInterval = AudioActivatedInterval(startTime:  startTime)
     }
     
     private func deactivateRecord() {
         print("deactivate record")
         self.isRecording = false
         guard var interval = self.audioActivatedInterval else {return}
-        interval.endTime = self.recorder.getCurrentTime()
-        print("endTime = " + interval.endTime!.description)
+        interval.endTime = self.recorder.getCurrentTime() + watchInterval
         self.audioActivatedIntervalRecord.append(interval)
         self.audioActivatedInterval = nil
     }
     
     func exportRecord() -> [AudioActivatedInterval] {
-        print("exportRecord")
-        return self.audioActivatedIntervalRecord
+        return self.audioActivatedIntervalRecord.filter({interval in
+            guard let endTime = interval.endTime else {return false}
+            return endTime > interval.startTime
+        })
     }
 }

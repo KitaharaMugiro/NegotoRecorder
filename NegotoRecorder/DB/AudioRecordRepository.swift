@@ -17,6 +17,8 @@ class ActivatedIntervalRealm: Object {
     @objc dynamic var filename = ""
     @objc dynamic var startTime:Double = 0
     @objc dynamic var endTime:Double = 0
+    @objc dynamic var title : String = ""
+    @objc dynamic var isRecognized: Bool = false
     @objc dynamic var createdAt = Date()
 }
     
@@ -30,6 +32,15 @@ class AudioRecordRealm: Object {
 
 class AudioRecordRepository {
     
+    func updateIntervalTitle(interval:ActivatedIntervalViewModel) {
+        let realm = try! Realm()
+        let intervalRealm = realm.objects(ActivatedIntervalRealm.self).filter("id == %@", interval.id).first
+        try! realm.write {
+            intervalRealm!.title = interval.title
+            intervalRealm!.isRecognized = true
+        }
+    }
+    
     func getAllAudioRecords() -> [AudioRecordViewModel] {
         let realm = try! Realm()
         let records = realm.objects(AudioRecordRealm.self)
@@ -37,6 +48,20 @@ class AudioRecordRepository {
         return records.compactMap({ result in
             return AudioRecordViewModel(realmModel: result)
         })
+    }
+    
+    func getNotRecognizedIntervals() -> [ActivatedIntervalViewModel] {
+        let realm = try! Realm()
+        let records = realm.objects(AudioRecordRealm.self)
+        var result:[ActivatedIntervalViewModel] = []
+        for record in records {
+            for interval in record.intervals {
+                if !interval.isRecognized {
+                    result.append(ActivatedIntervalViewModel(realmModel: interval))
+                }
+            }
+        }
+        return result
     }
     
     func setAudioRecord(fileName:String, records: [AudioActivatedInterval]) {
@@ -64,11 +89,13 @@ class AudioRecordRepository {
         for record in records {
             if  let endTime = record.endTime {
                 let elem = ActivatedIntervalRealm()
-                elem.id = UUID().uuidString
+                elem.id = record.id
                 elem.audioRecordId = id
-                elem.filename = ""
+                elem.filename = record.id + Constants.audioPrefix
                 elem.startTime = record.startTime
                 elem.endTime = endTime
+                elem.title = ""
+                elem.isRecognized = false
                 elem.createdAt = Date()
                 list.append(elem)
             }

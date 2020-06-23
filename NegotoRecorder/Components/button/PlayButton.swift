@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 import EMTNeumorphicView
-class PlayButton  {
+import AVFoundation
+class PlayButton:NSObject  {
     var button : EMTNeumorphicButton
     var player : AudioPlayer?
     
-    init() {
+    override init() {
         let button = EMTNeumorphicButton(type: .custom)
          let offIcon = UIImage(systemName:  "play")?.withTintColor(MyColors.gray, renderingMode: .alwaysOriginal)
          let onIcon = UIImage(systemName:  "pause")?.withTintColor(MyColors.gray, renderingMode: .alwaysOriginal)
@@ -42,7 +43,6 @@ class PlayButton  {
         button.isSelected = !button.isSelected
         if button.isSelected {
             print("button is tapped and selected")
-            print(self.player)
             self.player?.description()
             player?.play()
             let value:CGFloat = 10
@@ -56,7 +56,20 @@ class PlayButton  {
     
     func setPlayer(_ player: AudioPlayer) {
         print("setPlayer from PlayButton")
+        player.setDelegate(delegate: self, audioDelegate: self)
         self.player = player
         print(self.player)
     }
+}
+
+extension PlayButton : AudioPlayerDelegate, AVAudioPlayerDelegate  {
+    func onFailPlay() {
+        print("onFailPlay")
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("audioPlayerDidFinishPlaying")
+        self.tapped(self.button)
+    }
+    
 }

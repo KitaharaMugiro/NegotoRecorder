@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import AVFoundation
 class CommonUtils {
+    static func getAvAsset(fileName : String) -> AVAsset {
+        let path = self.getFileURL(fileName: fileName)
+        return AVAsset(url: path)
+    }
+    
     static func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
