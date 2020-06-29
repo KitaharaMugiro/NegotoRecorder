@@ -33,7 +33,8 @@
 		35B871F624A8990A005964F4 /* SensibilityHorizontalButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F524A8990A005964F4 /* SensibilityHorizontalButtons.swift */; };
 		35B871F824A8C119005964F4 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F724A8C119005964F4 /* TermsViewController.swift */; };
 		35B871FA24A8C1C9005964F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F924A8C1C9005964F4 /* WebView.swift */; };
-		35B871FC24A8E6F9005964F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B871FB24A8E6F9005964F4 /* Assets.xcassets */; };
+		35B871FE24AA2E7C005964F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B871FD24AA2E7C005964F4 /* Assets.xcassets */; };
+		35B8720024AA30C6005964F4 /* SensibilityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871FF24AA30C6005964F4 /* SensibilityType.swift */; };
 		35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */; };
 		35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */; };
 		35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */; };
@@ -74,7 +75,8 @@
 		35B871F524A8990A005964F4 /* SensibilityHorizontalButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensibilityHorizontalButtons.swift; sourceTree = "<group>"; };
 		35B871F724A8C119005964F4 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		35B871F924A8C1C9005964F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		35B871FB24A8E6F9005964F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35B871FD24AA2E7C005964F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35B871FF24AA30C6005964F4 /* SensibilityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensibilityType.swift; sourceTree = "<group>"; };
 		35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordViewModel.swift; sourceTree = "<group>"; };
 		35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrimmer.swift; sourceTree = "<group>"; };
 		35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizer.swift; sourceTree = "<group>"; };
@@ -137,8 +139,8 @@
 				3501A730249AEC510098322E /* Presentation */,
 				3501A72F249AEB470098322E /* View */,
 				3501A71B249AE6310098322E /* AppDelegate.swift */,
-				35B871FB24A8E6F9005964F4 /* Assets.xcassets */,
 				3501A71D249AE6310098322E /* SceneDelegate.swift */,
+				35B871FD24AA2E7C005964F4 /* Assets.xcassets */,
 				3501A729249AE6360098322E /* Info.plist */,
 				3501A723249AE6360098322E /* Preview Content */,
 			);
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				35B871F124A88D10005964F4 /* RecordState.swift */,
+				35B871FF24AA30C6005964F4 /* SensibilityType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -334,7 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B871FC24A8E6F9005964F4 /* Assets.xcassets in Resources */,
+				35B871FE24AA2E7C005964F4 /* Assets.xcassets in Resources */,
 				3501A725249AE6360098322E /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */,
+				35B8720024AA30C6005964F4 /* SensibilityType.swift in Sources */,
 				35A741AA249F373F002417F1 /* NegotoListViewController.swift in Sources */,
 				35A741BA249F8EF8002417F1 /* AudioRecordRepository.swift in Sources */,
 				35A741B0249F477E002417F1 /* NegotoCell.swift in Sources */,

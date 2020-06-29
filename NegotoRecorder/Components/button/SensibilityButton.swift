@@ -10,34 +10,6 @@ import Foundation
 import UIKit
 import EMTNeumorphicView
 
-enum SensibilityType {
-    case small
-    case medium
-    case large
-    
-    func getDecibelValue() -> Float {
-        switch self {
-        case .small:
-            return 130
-        case .medium :
-            return 110
-        case .large :
-            return 90
-        }
-    }
-    
-    func getText() -> String {
-        switch self {
-        case .small:
-            return "S"
-        case .medium :
-            return "M"
-        case .large :
-            return "L"
-        }
-    }
-}
-
 protocol SensibilityButtonDelegate: class {
     func onTapped(type: SensibilityType)
 }

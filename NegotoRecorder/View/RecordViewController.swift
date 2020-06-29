@@ -84,7 +84,7 @@ class RecordViewController: UIViewController {
 extension RecordViewController : AudioRecorderDelegate, AVAudioRecorderDelegate {
     func onStartRecord() {
         print("start recording")
-        self.stateMessage.state = .recording
+        self.stateMessage.state = .listening
         self.watcher?.startWatch()
     }
     
