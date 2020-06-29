@@ -13,13 +13,21 @@ import Foundation
 //threshholdを下回ったらそこで記録を終了する
 //開始時間と終了時間をペアで持っておく
 
+protocol RecordInputLevelWatcherDelegate:class {
+    func onActivated()
+    func onDeactivated()
+}
+
 struct AudioActivatedInterval {
     var startTime: Double
     var endTime : Double? = nil
     var id : String = UUID().uuidString
+    var createdAt: Date
 }
 
 class RecordInputLevelWatcher {
+    weak var delegate: RecordInputLevelWatcherDelegate? = nil
+    
     private let watchInterval:TimeInterval = 1
     private var threshhold:Float = 100 //db ここどうやって決めたらいいんだろう
     private var isRecording = false
@@ -38,6 +46,7 @@ class RecordInputLevelWatcher {
         print("start watching")
         self.timer = Timer.scheduledTimer(withTimeInterval: watchInterval, repeats: true) { t in
             let meterValue = self.recorder.getMeterValue()
+            print("meterValue = \(meterValue)")
             if meterValue > self.threshhold {
                 if !self.isRecording {
                     self.activateRecord()
@@ -57,16 +66,18 @@ class RecordInputLevelWatcher {
     
     private func activateRecord() {
         print("activate record")
+        self.delegate?.onActivated()
         self.isRecording = true
         let startTime = max(self.recorder.getCurrentTime() - watchInterval, 0)
-        self.audioActivatedInterval = AudioActivatedInterval(startTime:  startTime)
+        self.audioActivatedInterval = AudioActivatedInterval(startTime:  startTime, createdAt: Date())
     }
     
     private func deactivateRecord() {
         print("deactivate record")
+        self.delegate?.onDeactivated()
         self.isRecording = false
         guard var interval = self.audioActivatedInterval else {return}
-        interval.endTime = self.recorder.getCurrentTime() + watchInterval
+        interval.endTime = self.recorder.getCurrentTime() 
         self.audioActivatedIntervalRecord.append(interval)
         self.audioActivatedInterval = nil
     }
@@ -76,5 +87,9 @@ class RecordInputLevelWatcher {
             guard let endTime = interval.endTime else {return false}
             return endTime > interval.startTime
         })
+    }
+    
+    func setThreshhold(value : Float) {
+        self.threshhold = value
     }
 }

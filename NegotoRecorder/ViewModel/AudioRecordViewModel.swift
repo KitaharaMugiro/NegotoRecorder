@@ -17,6 +17,7 @@ struct ActivatedIntervalViewModel {
     var endTime:Double
     var title : String
     var isRecognized: Bool
+    var createdAt:Date
     
     init(realmModel: ActivatedIntervalRealm) {
         self.id = realmModel.id
@@ -24,7 +25,7 @@ struct ActivatedIntervalViewModel {
         self.filename = realmModel.filename
         self.startTime = realmModel.startTime
         self.endTime = realmModel.endTime
-        
+        self.createdAt = realmModel.createdAt
         self.title = realmModel.title
         self.isRecognized = realmModel.isRecognized
     }

@@ -24,6 +24,6 @@ class AppTitleLabel {
     }
     
     func setLayoutUpperCenter(width: CGFloat) {
-        label.frame = CGRect(x: 30, y: 200, width: width - 60, height: 50)
+        label.frame = CGRect(x: 30, y: 80, width: width - 60, height: 50)
     }
 }

@@ -14,22 +14,22 @@ struct NegotoCellData {
     var date: Date
     var negotoId: String
     var fileName : String
+    var seconds: Int
 }
 
 class NegotoCell : UITableViewCell {
     var data : NegotoCellData? {
         didSet{
-            self.titleLabel.text = data?.title
-            if let _date = data?.date {
-                self.dateLable.text = CommonUtils.stringFromDate(date: _date, format: "yyyy年MM月dd日 HH時mm分")
-            }
-            
+            guard let _data = data else {return}
+            self.titleLabel.text = _data.title
+            self.secondsLabel.text = "(\(String(describing: _data.seconds))秒)"
+            self.dateLable.text = CommonUtils.stringFromDate(date: _data.date, format: "yyyy年MM月dd日 HH時mm分")            
         }
     }
     
     private let titleLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = MyColors.gray
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         return lbl
@@ -37,8 +37,16 @@ class NegotoCell : UITableViewCell {
     
     private let dateLable: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = MyColors.gray
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
+        lbl.textAlignment = .left
+        return lbl
+    }()
+    
+    private let secondsLabel:UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = MyColors.gray
+        lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         return lbl
     }()
@@ -52,7 +60,9 @@ class NegotoCell : UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(titleLabel)
         addSubview(dateLable)
-        dateLable.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
+        addSubview(secondsLabel)
+        dateLable.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: secondsLabel.leftAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        secondsLabel.anchor(top: topAnchor, left: dateLable.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 0, enableInsets: false)
         titleLabel.anchor(top: dateLable.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
         playButton.setRightBottom(view: self, color: MyColors.theme.cgColor)
         

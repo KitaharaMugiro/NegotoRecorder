@@ -15,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let taskHandler : AudioRecognizeTaskHandler = AudioRecognizeTaskHandler()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
-        let realm = try! Realm(configuration:config)
-        try! realm.write {
-            realm.deleteAll()
-        }
+//        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+//        let realm = try! Realm(configuration:config)
+//        try! realm.write {
+//            realm.deleteAll()
+//        }
         return true
     }
     

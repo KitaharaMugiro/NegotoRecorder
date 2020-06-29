@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class MyColors {
     static let theme = UIColor(hex: "C1D2EB")
-    static let gray = UIColor(hex: "8c92ac")
+    static let gray = UIColor(hex: "616771") //8c92ac
     static let red = UIColor(hex:"B22222")
     static let hadairo = UIColor(hex:"F0EEEF")
 }

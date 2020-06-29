@@ -24,6 +24,7 @@ class HeaderLabel {
     }
     
     func setLayoutTopCenter(width: CGFloat) {
-        label.frame = CGRect(x: 30, y: 50, width: width - 60, height: 50)
+        label.frame = CGRect(x: 30, y: 50, width: width - 60, height: 0)
+        label.sizeToFit()
     }
 }

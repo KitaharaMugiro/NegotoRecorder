@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+protocol InfoButtonDelegate: class {
+    func onTappedInfo()
+}
+
 class InfoButton:NSObject {
     var button : UIButton
+    weak var delegate: InfoButtonDelegate? = nil
     
     override init() {
         let button = UIButton()
@@ -24,11 +29,11 @@ class InfoButton:NSObject {
     }
     
     @objc func tapped(_ button: UIButton) {
-        //open 利用規約
+        self.delegate?.onTappedInfo()
     }
     
     
     func setRightCornerLayout(width: CGFloat) {
-        self.button.frame = CGRect(x: width - 40, y: 20, width: 30, height: 30)
+        self.button.frame = CGRect(x: width - 40, y: 30, width: 30, height: 30)
     }
 }

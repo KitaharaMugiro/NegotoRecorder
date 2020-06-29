@@ -44,9 +44,32 @@ class AudioRecordRepository {
     func getAllAudioRecords() -> [AudioRecordViewModel] {
         let realm = try! Realm()
         let records = realm.objects(AudioRecordRealm.self)
-        print("records = " + records.count.description)
         return records.compactMap({ result in
             return AudioRecordViewModel(realmModel: result)
+            })
+    }
+    
+    
+    func getAllIntervals() -> [ActivatedIntervalViewModel] {
+        let files = self.getAllAudioRecords()
+        var result:[ActivatedIntervalViewModel] = []
+        for file in files {
+            result += file.intervals
+        }
+        return result
+    }
+    
+    func getAllAvailableIntervals(suffix:Int) -> [ActivatedIntervalViewModel] {
+        let files = self.getAllAudioRecords()
+        var result:[ActivatedIntervalViewModel] = []
+        for file in files {
+            let intervals = file.intervals
+            result += intervals.filter{interval in
+                return interval.isRecognized && interval.title != ""
+            }
+        }
+        return result.suffix(suffix).sorted(by: {a,b in
+            return a.createdAt > b.createdAt
         })
     }
     
@@ -96,7 +119,7 @@ class AudioRecordRepository {
                 elem.endTime = endTime
                 elem.title = ""
                 elem.isRecognized = false
-                elem.createdAt = Date()
+                elem.createdAt = record.createdAt
                 list.append(elem)
             }
         }
