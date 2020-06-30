@@ -1,0 +1,2 @@
+NSMicrophoneUsageDescription="It will record your sounds when you sleep";
+NSSpeechRecognitionUsageDescription="It will speech recognize your sleep talks";

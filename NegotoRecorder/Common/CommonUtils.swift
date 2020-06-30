@@ -46,4 +46,13 @@ class CommonUtils {
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
+    
+    static func stringFromDateLocalized(date: Date) -> String {
+        let formatter = DateFormatter()
+        let locale = NSLocale.current
+        let format = DateFormatter.dateFormat(fromTemplate: "yyyyMMdd hhmm", options: 0, locale: locale)
+        formatter.dateFormat = format
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
 }

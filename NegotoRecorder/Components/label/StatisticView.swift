@@ -22,7 +22,7 @@ class StatisticView {
     }
     
     func setText(monooto:Int, negoto:Int) {
-        self.label.text = "物音: \(monooto)件(非表示)\n寝言: \(negoto)件(表示最大50件)"
+        self.label.text = String(format: NSLocalizedString("statisticText", comment: ""), String(monooto), String(negoto))
     }
     
     func getView() -> UILabel {

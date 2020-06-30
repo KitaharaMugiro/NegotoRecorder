@@ -76,7 +76,8 @@ class RecordViewController: UIViewController {
         watcher.delegate = self
         self.watcher = watcher
         
-        self.audioRecognizer = AudioRecognizer(delegate: self)
+        let locale = NSLocale.current
+        self.audioRecognizer = AudioRecognizer(locale: locale,delegate: self)
     }
 }
 

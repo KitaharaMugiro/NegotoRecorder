@@ -12,7 +12,7 @@ class HeaderLabel {
     var label : UILabel
     init() {
         let view = UILabel()
-        view.text = "過去の寝言を振り返る"
+        view.text = "lookBackSleepTalk".localized
         view.textColor = MyColors.gray
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 30)

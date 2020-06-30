@@ -33,8 +33,10 @@
 		35B871F624A8990A005964F4 /* SensibilityHorizontalButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F524A8990A005964F4 /* SensibilityHorizontalButtons.swift */; };
 		35B871F824A8C119005964F4 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F724A8C119005964F4 /* TermsViewController.swift */; };
 		35B871FA24A8C1C9005964F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871F924A8C1C9005964F4 /* WebView.swift */; };
-		35B871FE24AA2E7C005964F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B871FD24AA2E7C005964F4 /* Assets.xcassets */; };
 		35B8720024AA30C6005964F4 /* SensibilityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B871FF24AA30C6005964F4 /* SensibilityType.swift */; };
+		35B8720224AABECD005964F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720124AABECD005964F4 /* Assets.xcassets */; };
+		35B8720624AAC444005964F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720824AAC444005964F4 /* Localizable.strings */; };
+		35B8720C24AACF9A005964F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720E24AACF9A005964F4 /* InfoPlist.strings */; };
 		35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */; };
 		35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */; };
 		35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */; };
@@ -47,7 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3501A718249AE6310098322E /* AI寝言.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AI寝言.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3501A718249AE6310098322E /* AINegotoRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AINegotoRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3501A71B249AE6310098322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3501A71D249AE6310098322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3501A724249AE6360098322E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -75,8 +77,12 @@
 		35B871F524A8990A005964F4 /* SensibilityHorizontalButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensibilityHorizontalButtons.swift; sourceTree = "<group>"; };
 		35B871F724A8C119005964F4 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		35B871F924A8C1C9005964F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		35B871FD24AA2E7C005964F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35B871FF24AA30C6005964F4 /* SensibilityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensibilityType.swift; sourceTree = "<group>"; };
+		35B8720124AABECD005964F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35B8720724AAC444005964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		35B8720924AAC446005964F4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		35B8720D24AACF9A005964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		35B8720F24AACF9D005964F4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordViewModel.swift; sourceTree = "<group>"; };
 		35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrimmer.swift; sourceTree = "<group>"; };
 		35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizer.swift; sourceTree = "<group>"; };
@@ -123,7 +129,7 @@
 		3501A719249AE6310098322E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3501A718249AE6310098322E /* AI寝言.app */,
+				3501A718249AE6310098322E /* AINegotoRecorder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,7 +146,8 @@
 				3501A72F249AEB470098322E /* View */,
 				3501A71B249AE6310098322E /* AppDelegate.swift */,
 				3501A71D249AE6310098322E /* SceneDelegate.swift */,
-				35B871FD24AA2E7C005964F4 /* Assets.xcassets */,
+				35B8720124AABECD005964F4 /* Assets.xcassets */,
+				35B8720324AAC408005964F4 /* Localizations */,
 				3501A729249AE6360098322E /* Info.plist */,
 				3501A723249AE6360098322E /* Preview Content */,
 			);
@@ -260,6 +267,15 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		35B8720324AAC408005964F4 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				35B8720824AAC444005964F4 /* Localizable.strings */,
+				35B8720E24AACF9A005964F4 /* InfoPlist.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
 		35D7DC25249FA8E500296BD1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,7 +312,7 @@
 			);
 			name = NegotoRecorder;
 			productName = NegotoRecorder;
-			productReference = 3501A718249AE6310098322E /* AI寝言.app */;
+			productReference = 3501A718249AE6310098322E /* AINegotoRecorder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -321,6 +337,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 3501A70F249AE6300098322E;
 			productRefGroup = 3501A719249AE6310098322E /* Products */;
@@ -337,7 +354,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B871FE24AA2E7C005964F4 /* Assets.xcassets in Resources */,
+				35B8720224AABECD005964F4 /* Assets.xcassets in Resources */,
+				35B8720C24AACF9A005964F4 /* InfoPlist.strings in Resources */,
+				35B8720624AAC444005964F4 /* Localizable.strings in Resources */,
 				3501A725249AE6360098322E /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +448,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		35B8720824AAC444005964F4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35B8720724AAC444005964F4 /* en */,
+				35B8720924AAC446005964F4 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		35B8720E24AACF9A005964F4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35B8720D24AACF9A005964F4 /* en */,
+				35B8720F24AACF9D005964F4 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3501A72A249AE6360098322E /* Debug */ = {
@@ -561,7 +601,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
-				PRODUCT_NAME = "AI寝言";
+				PRODUCT_NAME = AINegotoRecorder;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -583,7 +623,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
-				PRODUCT_NAME = "AI寝言";
+				PRODUCT_NAME = AINegotoRecorder;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

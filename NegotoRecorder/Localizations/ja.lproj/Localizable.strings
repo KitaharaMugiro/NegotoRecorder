@@ -1,0 +1,9 @@
+"exampleTextKey" = "テキスト";
+"appTitle" = "AI寝言レコーダー";
+"clickBelowButtonAndRecord" = "下のボタンをクリックして録音";
+"changeSensibility" = "感度を設定(いつでも変更可能)";
+"record" = "録音";
+"history" = "寝言履歴";
+"lookBackSleepTalk" = "過去の寝言を振り返る";
+"statisticText" = "物音: %@件(非表示)\n寝言: %@件(表示最大50件)";
+"seconds" = "(%@秒)";

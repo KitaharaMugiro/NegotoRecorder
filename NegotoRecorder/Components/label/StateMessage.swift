@@ -30,7 +30,7 @@ class StateMessage {
     
     init() {
         let view = UILabel()
-        view.text = "下のボタンをクリックして録音"
+        view.text = "clickBelowButtonAndRecord".localized
         view.textColor = MyColors.gray
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 18)
@@ -53,7 +53,7 @@ class StateMessage {
     }
     
     private func setEmpty() {
-        self.label.text = "下のボタンをクリックして録音"
+        self.label.text = "clickBelowButtonAndRecord".localized
         self.label.textColor = MyColors.gray
     }
 

@@ -1,0 +1,9 @@
+"exampleTextKey" = "Text";
+"appTitle" = "AI SleepTalk Recorder";
+"clickBelowButtonAndRecord" = "Click below and record";
+"changeSensibility" = "Sensibility(You can change anytime)";
+"record" = "Record";
+"history" = "History";
+"lookBackSleepTalk" = "Your past sleep talks";
+"statisticText" = "Sounds: %@(Hidden)\nSleepTalks: %@(Up to 50)";
+"seconds" = "(%@s)";

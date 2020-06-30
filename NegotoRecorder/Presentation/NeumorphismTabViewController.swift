@@ -12,8 +12,8 @@ import NeumorphismTab
 class NeumorphismViewController: NeumorphismTabBarController {
 
     override func setupView() {
-        let home = NeumorphismTabBarItem(icon: UIImage(systemName: "house.fill")!, title: "録音")
-        let favorite = NeumorphismTabBarItem(icon: UIImage(systemName: "list.bullet")!, title: "寝言履歴")
+        let home = NeumorphismTabBarItem(icon: UIImage(systemName: "house.fill")!, title: "record".localized)
+        let favorite = NeumorphismTabBarItem(icon: UIImage(systemName: "list.bullet")!, title: "history".localized)
         let color = MyColors.theme
         view.backgroundColor = color
         

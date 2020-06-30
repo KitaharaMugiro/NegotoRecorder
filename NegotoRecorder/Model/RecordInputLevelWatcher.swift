@@ -28,8 +28,8 @@ struct AudioActivatedInterval {
 class RecordInputLevelWatcher {
     weak var delegate: RecordInputLevelWatcherDelegate? = nil
     
-    private let watchInterval:TimeInterval = 1
-    private var threshhold:Float = 100 //db ここどうやって決めたらいいんだろう
+    private let watchInterval:TimeInterval = 1.5 //長くするほど比較的に長めの寝言を撮りに行く
+    private var threshhold:Float = SensibilityType.medium.getDecibelValue() //db ここどうやって決めたらいいんだろう
     private var isRecording = false
     
     private var audioActivatedInterval: AudioActivatedInterval?

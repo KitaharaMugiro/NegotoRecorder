@@ -15,11 +15,11 @@ enum SensibilityType {
     func getDecibelValue() -> Float {
         switch self {
         case .small:
-            return 130
+            return 135
         case .medium :
-            return 110
+            return 120
         case .large :
-            return 90
+            return 110
         }
     }
     

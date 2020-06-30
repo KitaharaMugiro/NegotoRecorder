@@ -12,7 +12,7 @@ class AppTitleLabel {
     var label : UILabel
     init() {
         let view = UILabel()
-        view.text = "AI寝言レコーダー"
+        view.text = "appTitle".localized
         view.textColor = MyColors.gray
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 30)

@@ -19,7 +19,7 @@ class SensibilityHorizontalButtons: NSObject {
     private var buttons : [SensibilityButton]
     private lazy var descriptionLabel : UILabel = {
         let view = UILabel()
-        view.text = "感度を設定(いつでも変更可能)"
+        view.text = "changeSensibility".localized
         view.textColor = MyColors.gray
         view.textAlignment = .center
         return view

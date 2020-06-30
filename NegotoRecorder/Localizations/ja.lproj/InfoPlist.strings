@@ -1,0 +1,2 @@
+NSMicrophoneUsageDescription="寝ている時の音の録音のために使います";
+NSSpeechRecognitionUsageDescription="寝言解析のために使います";

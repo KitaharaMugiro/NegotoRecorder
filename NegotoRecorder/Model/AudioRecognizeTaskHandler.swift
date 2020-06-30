@@ -19,7 +19,8 @@ class AudioRecognizeTaskHandler {
          */
         guard let interval = seeIfAudioIsRecognized() else {return}
         print("startTime = \(interval.startTime)")
-        let audioRecognizer = AudioRecognizer(delegate: self)
+        let locale = NSLocale.current
+        let audioRecognizer = AudioRecognizer(locale: locale, delegate: self)
         self.audioRecognizer = audioRecognizer
         audioRecognizer.recognize(interval: interval)
     }

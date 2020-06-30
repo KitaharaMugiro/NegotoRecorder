@@ -22,8 +22,8 @@ class NegotoCell : UITableViewCell {
         didSet{
             guard let _data = data else {return}
             self.titleLabel.text = _data.title
-            self.secondsLabel.text = "(\(String(describing: _data.seconds))秒)"
-            self.dateLable.text = CommonUtils.stringFromDate(date: _data.date, format: "yyyy年MM月dd日 HH時mm分")            
+            self.secondsLabel.text = String(format: NSLocalizedString("seconds", comment: ""), String(describing: _data.seconds))
+            self.dateLable.text = CommonUtils.stringFromDateLocalized(date: _data.date)
         }
     }
     
