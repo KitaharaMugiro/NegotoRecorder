@@ -7,3 +7,5 @@
 "lookBackSleepTalk" = "過去の寝言を振り返る";
 "statisticText" = "物音: %@件(非表示)\n寝言: %@件(表示最大50件)";
 "seconds" = "(%@秒)";
+"monooto" = "物音";
+"negoto" = "寝言";

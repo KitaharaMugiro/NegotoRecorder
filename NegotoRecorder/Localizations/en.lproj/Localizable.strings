@@ -5,5 +5,7 @@
 "record" = "Record";
 "history" = "History";
 "lookBackSleepTalk" = "Your past sleep talks";
-"statisticText" = "Sounds: %@(Hidden)\nSleepTalks: %@(Up to 50)";
+"statisticText" = "Noise: %@(Hidden)\nSleepTalks: %@(Up to 50)";
 "seconds" = "(%@s)";
+"monooto" = "Noise";
+"negoto" = "SleepTalks";

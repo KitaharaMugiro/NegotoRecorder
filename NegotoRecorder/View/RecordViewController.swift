@@ -161,6 +161,4 @@ extension RecordViewController: InfoButtonDelegate {
     func onTappedInfo() {
         self.present(TermsViewController(), animated: true, completion: nil)
     }
-    
-    
 }

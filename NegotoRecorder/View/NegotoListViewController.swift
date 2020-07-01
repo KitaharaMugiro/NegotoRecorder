@@ -12,19 +12,25 @@ import EMTNeumorphicView
 import AVFoundation
 
 class NegotListViewController: UIViewController {
-    lazy var titleView : HeaderLabel = {
+    private lazy var titleView : HeaderLabel = {
         let view = HeaderLabel()
         return view
     }()
     
-    lazy var statisticView : StatisticView = {
+    private lazy var statisticView : StatisticView = {
         let view = StatisticView()
+        return view
+    }()
+    
+    private lazy var audioKindButtons : AudioKindButtons = {
+        let view = AudioKindButtons(color: MyColors.theme)
+        view.delegate = self
         return view
     }()
     
     private var intervals : [ActivatedIntervalViewModel] = []
 
-    lazy var tableView : NegotoDailyTable = {
+    private lazy var tableView : NegotoDailyTable = {
         let view = NegotoDailyTable(dataSource: self, tableDelegate: self)
         return view
     }()
@@ -34,23 +40,41 @@ class NegotListViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(titleView.getView())
         self.view.addSubview(statisticView.getView())
-        tableView.addMySelfToViewCompletely(view: self.view)
+        self.view.addSubview(audioKindButtons.getView())
+        tableView.addMySelfToViewCompletely(view: self.view, under: audioKindButtons.getView())
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("negoto list view will appear")
-        //DBからレコードを取得する
-        let repository = AudioRecordRepository()
-        self.intervals = repository.getAllAvailableIntervals(suffix:50)
-        let allIntervals = repository.getAllIntervals()
-        statisticView.setText(monooto: allIntervals.count, negoto: self.intervals.count)
-        self.tableView.update()
+        self.updateTableAndStatistic()
     }
     
     override func viewDidLayoutSubviews() {
         let width = self.view.frame.width
         titleView.setLayoutTopCenter(width: width)
         statisticView.setLayoutUnder(view: titleView.getView())
+        audioKindButtons.setLayoutUnder(view: statisticView.getView(), width: width)
+    }
+    
+    fileprivate func onChangeAudioKind(type: AudioKind) {
+        self.updateTableAndStatistic(type:type)
+    }
+    
+    fileprivate func updateTableAndStatistic(type: AudioKind = .negoto) {
+        //DBからレコードを取得する
+        let repository = AudioRecordRepository()
+        let negotos = repository.getAllAvailableIntervals(suffix:50)
+        let allIntervals = repository.getAllIntervals()
+        statisticView.setText(monooto: allIntervals.count, negoto: negotos.count)
+        
+        if(type == .negoto) {
+            self.intervals = negotos
+        } else {
+            self.intervals = allIntervals.filter {a in
+                return a.title == ""
+            }
+        }
+        
+        self.tableView.update()
     }
 }
 
@@ -110,5 +134,12 @@ extension NegotListViewController: UITableViewDataSource {
 }
 
 extension NegotListViewController: UITableViewDelegate {
+    
+}
+
+extension NegotListViewController: AudioKindButtonsDelegate {
+    func onTapped(type: AudioKind) {
+        self.onChangeAudioKind(type:type)
+    }
     
 }
