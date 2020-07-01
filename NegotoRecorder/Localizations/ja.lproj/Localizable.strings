@@ -9,3 +9,4 @@
 "seconds" = "(%@秒)";
 "monooto" = "物音";
 "negoto" = "寝言";
+"weAreRecognizingAudios" = "音声認識中...(残り:%@件)";

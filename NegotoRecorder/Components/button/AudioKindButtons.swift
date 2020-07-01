@@ -21,7 +21,7 @@ class AudioKindButtons: NSObject {
     private lazy var descriptionLabel : UILabel = {
         let view = UILabel()
         view.text = ""
-        view.textColor = MyColors.gray
+        view.textColor = MyColors.red
         view.textAlignment = .center
         return view
     }()
@@ -65,6 +65,14 @@ class AudioKindButtons: NSObject {
         baseView.frame = CGRect(x: 0 , y: view.frame.maxY + 30, width: width, height: 50)
         descriptionLabel.frame = CGRect(x: 0, y: 0, width: width, height: 15)
         stack.frame = CGRect(x: margin , y: 25, width: width - 2*margin, height: 30)
+    }
+    
+    func setWeAreRecognizingAudios(count:Int) {
+        if(count == 0) {
+            descriptionLabel.text = ""
+        } else{
+            descriptionLabel.text = String(format: "weAreRecognizingAudios".localized, String(count))
+        }
     }
 }
 

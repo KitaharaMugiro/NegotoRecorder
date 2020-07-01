@@ -73,8 +73,12 @@ class NegotListViewController: UIViewController {
                 return a.title == ""
             }
         }
-        
         self.tableView.update()
+        
+        //音声認識中のAudioのカウントを数える
+        let count = AudioRecognizeTaskHandler().getNumberOfAudiosNotRecognizedYet()
+        self.audioKindButtons.setWeAreRecognizingAudios(count : count)
+        
     }
 }
 

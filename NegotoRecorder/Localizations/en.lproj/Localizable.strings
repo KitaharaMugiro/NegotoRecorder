@@ -9,3 +9,4 @@
 "seconds" = "(%@s)";
 "monooto" = "Noise";
 "negoto" = "SleepTalks";
+"weAreRecognizingAudios" = "Speech recognition in progress... (%@ to go)";

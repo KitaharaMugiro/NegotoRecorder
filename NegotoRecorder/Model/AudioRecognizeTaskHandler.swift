@@ -35,6 +35,12 @@ class AudioRecognizeTaskHandler {
             return intervals[0]
         }
     }
+    
+    func getNumberOfAudiosNotRecognizedYet() -> Int {
+        let repository = AudioRecordRepository()
+        let intervals = repository.getNotRecognizedIntervals()
+        return intervals.count
+    }
 }
 
 extension AudioRecognizeTaskHandler: AudioRecognizerDelegate {
