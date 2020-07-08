@@ -33,6 +33,11 @@ class CommonUtils {
         return path as URL
     }
     
+    static func isFileExist(fileName: String) -> Bool {
+        let path = getDocumentsDirectory().appendingPathComponent(fileName)
+        return FileManager.default.fileExists(atPath: path.path)
+    }
+    
     static func dateFromString(string: String, format: String) -> Date {
         let formatter: DateFormatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)

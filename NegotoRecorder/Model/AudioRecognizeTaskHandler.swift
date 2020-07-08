@@ -8,7 +8,11 @@
 
 import Foundation
 class AudioRecognizeTaskHandler {
-    var audioRecognizer : AudioRecognizer? = nil
+    lazy var audioRecognizer : AudioRecognizer = {
+        let locale = NSLocale.current
+        let audioRecognizer = AudioRecognizer(locale: locale, delegate: self)
+        return audioRecognizer
+    }()
     
     func processAudioRecognition() {
         print("processAudioRecognition")
@@ -18,11 +22,21 @@ class AudioRecognizeTaskHandler {
          呼び出しもとは起動時 & 録音完了時
          */
         guard let interval = seeIfAudioIsRecognized() else {return}
+        guard let originalFilename = getOriginalFilename(interval) else {return}
         print("startTime = \(interval.startTime)")
-        let locale = NSLocale.current
-        let audioRecognizer = AudioRecognizer(locale: locale, delegate: self)
-        self.audioRecognizer = audioRecognizer
-        audioRecognizer.recognize(interval: interval)
+        
+        print("will trim audio files")
+        let avAsset = CommonUtils.getAvAsset(fileName: originalFilename)
+        let trimmer = AudioTrimmer()
+        trimmer.trimAudio(asset: avAsset, startTime: interval.startTime, stopTime: interval.endTime, fileName: interval.id + Constants.audioPrefix, finished: {url in
+            print("successfully trim and save \(url)")
+            self.audioRecognizer.recognize(interval: interval)
+        })
+    }
+    
+    func getOriginalFilename(_ interval: ActivatedIntervalViewModel) -> String? {
+        let repository = AudioRecordRepository()
+        return repository.getOriginalFilename(interval: interval)
     }
     
     func seeIfAudioIsRecognized() -> ActivatedIntervalViewModel? {

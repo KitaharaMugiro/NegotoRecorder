@@ -40,6 +40,7 @@
 		35B8720224AABECD005964F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720124AABECD005964F4 /* Assets.xcassets */; };
 		35B8720624AAC444005964F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720824AAC444005964F4 /* Localizable.strings */; };
 		35B8720C24AACF9A005964F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35B8720E24AACF9A005964F4 /* InfoPlist.strings */; };
+		35C975ED24B3FB7900D94356 /* AudioFileCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C975EC24B3FB7900D94356 /* AudioFileCleaner.swift */; };
 		35D7DC27249FA8F800296BD1 /* AudioRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */; };
 		35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */; };
 		35D7DC2B24A1075800296BD1 /* AudioRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */; };
@@ -89,6 +90,7 @@
 		35B8720924AAC446005964F4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		35B8720D24AACF9A005964F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35B8720F24AACF9D005964F4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		35C975EC24B3FB7900D94356 /* AudioFileCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileCleaner.swift; sourceTree = "<group>"; };
 		35D7DC26249FA8F800296BD1 /* AudioRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordViewModel.swift; sourceTree = "<group>"; };
 		35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrimmer.swift; sourceTree = "<group>"; };
 		35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizer.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				35D7DC2824A0785600296BD1 /* AudioTrimmer.swift */,
 				35D7DC2A24A1075800296BD1 /* AudioRecognizer.swift */,
 				35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */,
+				35C975EC24B3FB7900D94356 /* AudioFileCleaner.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				35D7DC2924A0785600296BD1 /* AudioTrimmer.swift in Sources */,
 				35A7419C249CA950002417F1 /* AppTitleLabel.swift in Sources */,
 				35B871EF24A88ACB005964F4 /* StateMessage.swift in Sources */,
+				35C975ED24B3FB7900D94356 /* AudioFileCleaner.swift in Sources */,
 				35A741B4249F4FE1002417F1 /* PlayButton.swift in Sources */,
 				35A741A7249F2F92002417F1 /* CommonUtils.swift in Sources */,
 				355E99B024ACBBFB001C26C8 /* AudioKindButton.swift in Sources */,
@@ -611,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
 				PRODUCT_NAME = AINegotoRecorder;
 				SWIFT_VERSION = 5.0;
@@ -633,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
 				PRODUCT_NAME = AINegotoRecorder;
 				SWIFT_VERSION = 5.0;

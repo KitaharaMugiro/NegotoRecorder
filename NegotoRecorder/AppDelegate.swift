@@ -13,6 +13,8 @@ import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let taskHandler : AudioRecognizeTaskHandler = AudioRecognizeTaskHandler()
+    let cleaner = AudioFileCleaner()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
@@ -20,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        try! realm.write {
 //            realm.deleteAll()
 //        }
+        self.cleanAudioFiles()
         return true
+    }
+    
+    func cleanAudioFiles() {
+        self.cleaner.startClean()
     }
     
     func startProcessAudioRecognition() {

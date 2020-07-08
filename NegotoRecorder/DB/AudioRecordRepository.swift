@@ -21,6 +21,7 @@ class ActivatedIntervalRealm: Object {
     @objc dynamic var isRecognized: Bool = false
     @objc dynamic var createdAt = Date()
 }
+
     
 
 class AudioRecordRealm: Object {
@@ -31,6 +32,20 @@ class AudioRecordRealm: Object {
 }
 
 class AudioRecordRepository {
+    
+    func getOriginalFilename(interval: ActivatedIntervalViewModel) -> String? {
+        let realm = try! Realm()
+        let record = realm.objects(AudioRecordRealm.self).filter("id == %@", interval.audioRecordId).first
+        return record?.fileName
+    }
+    
+    func deleteInterval(id: String) {
+        let realm = try! Realm()
+        let intervalRealm = realm.objects(ActivatedIntervalRealm.self).filter("id == %@", id)
+        try! realm.write {
+            realm.delete(intervalRealm)
+        }
+    }
     
     func updateIntervalTitle(interval:ActivatedIntervalViewModel) {
         let realm = try! Realm()

@@ -99,17 +99,7 @@ extension RecordViewController : AudioRecorderDelegate, AVAudioRecorderDelegate 
         self.stateMessage.state = .noop
         let fileName = audioRecorder.getFileName()
         guard let records = watcher?.exportRecord() else {return}
-        
-        print("will trim audio files")
-        let avAsset = CommonUtils.getAvAsset(fileName: fileName)
-        let trimmer = AudioTrimmer()
-        for record in records {
-            guard let endTime = record.endTime else {continue}
-            trimmer.trimAudio(asset: avAsset, startTime: record.startTime, stopTime: endTime, fileName: record.id + Constants.audioPrefix, finished: {url in
-                print("successfully trim and save \(url)")
-            })
-        }
-        
+                
         print("will save records")
         let repository = AudioRecordRepository()
         repository.setAudioRecord(fileName: fileName, records: records)
@@ -118,7 +108,6 @@ extension RecordViewController : AudioRecorderDelegate, AVAudioRecorderDelegate 
         //初期化
         self.initializeDependency()
         
-        //この段階だとまだtrimされたファイルが存在しない
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.startProcessAudioRecognition()
     }
