@@ -83,6 +83,15 @@ class NegotListViewController: UIViewController {
 }
 
 extension NegotListViewController: UITableViewDataSource {
+    //Mark: セルの編集ができるようにする。
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let index = indexPath.section
+        let interval = intervals[index]
+        let usecase = IntervalUsecase()
+        usecase.deleteInteval(id: interval.id)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
     // There is just one row in every section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

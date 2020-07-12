@@ -65,7 +65,6 @@ class NegotoCell : UITableViewCell {
         secondsLabel.anchor(top: topAnchor, left: dateLable.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 0, enableInsets: false)
         titleLabel.anchor(top: dateLable.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
         playButton.setRightBottom(view: self, color: MyColors.theme.cgColor)
-        
     }
     
     required init?(coder: NSCoder) {

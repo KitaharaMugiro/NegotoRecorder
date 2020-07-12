@@ -49,11 +49,12 @@
 		35D7DC3124A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */; };
 		35D7DC3324A264DA00296BD1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3224A264DA00296BD1 /* InfoButton.swift */; };
 		35D7DC3524A381A400296BD1 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3424A381A400296BD1 /* StatisticView.swift */; };
+		35DE959024BAAB9400DE3D95 /* IntervalUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */; };
 		72774414FFE36F181EC1B1DC /* Pods_NegotoRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3501A718249AE6310098322E /* AINegotoRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AINegotoRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3501A718249AE6310098322E /* AIRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3501A71B249AE6310098322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3501A71D249AE6310098322E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3501A724249AE6360098322E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		35D7DC3024A1F0B800296BD1 /* AudioRecognizeTaskHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecognizeTaskHandler.swift; sourceTree = "<group>"; };
 		35D7DC3224A264DA00296BD1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		35D7DC3424A381A400296BD1 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalUsecase.swift; sourceTree = "<group>"; };
 		5220E444F9058C458C0E8897 /* Pods-NegotoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.debug.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NegotoRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6869BB17E2BF69B33FCDADC /* Pods-NegotoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.release.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +139,7 @@
 		3501A719249AE6310098322E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3501A718249AE6310098322E /* AINegotoRecorder.app */,
+				3501A718249AE6310098322E /* AIRecorder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +147,7 @@
 		3501A71A249AE6310098322E /* NegotoRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				35DE958E24BAAB8400DE3D95 /* Usecase */,
 				35D7DC25249FA8E500296BD1 /* ViewModel */,
 				35A741B8249F8E43002417F1 /* DB */,
 				35A741A1249F2B46002417F1 /* Model */,
@@ -296,6 +299,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		35DE958E24BAAB8400DE3D95 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
 		9810DA6C561EAE648FB45554 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +326,7 @@
 				0024A7324D6CBA9CC73DB571 /* [CP] Check Pods Manifest.lock */,
 				3501A714249AE6300098322E /* Sources */,
 				3501A715249AE6300098322E /* Frameworks */,
+				35DE958D24B8DBF500DE3D95 /* increment version */,
 				3501A716249AE6300098322E /* Resources */,
 				4C12F8B729B69E97DF688734 /* [CP] Embed Pods Frameworks */,
 			);
@@ -324,7 +336,7 @@
 			);
 			name = NegotoRecorder;
 			productName = NegotoRecorder;
-			productReference = 3501A718249AE6310098322E /* AINegotoRecorder.app */;
+			productReference = 3501A718249AE6310098322E /* AIRecorder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -398,6 +410,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		35DE958D24B8DBF500DE3D95 /* increment version */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "increment version";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "build_number=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuild_number=$(($build_number + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $build_number\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
 		4C12F8B729B69E97DF688734 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -438,6 +468,7 @@
 				35A7419C249CA950002417F1 /* AppTitleLabel.swift in Sources */,
 				35B871EF24A88ACB005964F4 /* StateMessage.swift in Sources */,
 				35C975ED24B3FB7900D94356 /* AudioFileCleaner.swift in Sources */,
+				35DE959024BAAB9400DE3D95 /* IntervalUsecase.swift in Sources */,
 				35A741B4249F4FE1002417F1 /* PlayButton.swift in Sources */,
 				35A741A7249F2F92002417F1 /* CommonUtils.swift in Sources */,
 				355E99B024ACBBFB001C26C8 /* AudioKindButton.swift in Sources */,
@@ -615,9 +646,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
-				PRODUCT_NAME = AINegotoRecorder;
+				PRODUCT_NAME = AIRecorder;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -637,9 +668,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
-				PRODUCT_NAME = AINegotoRecorder;
+				PRODUCT_NAME = AIRecorder;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
