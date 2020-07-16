@@ -10,3 +10,5 @@
 "monooto" = "Noise";
 "negoto" = "SleepTalks";
 "weAreRecognizingAudios" = "Speech recognition in progress... (%@ to go)";
+"wantFilter" = "Do you want Filtering";
+"deleteTheWord" = "You can make all '%@' invisible.";

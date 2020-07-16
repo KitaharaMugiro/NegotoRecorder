@@ -50,6 +50,9 @@
 		35D7DC3324A264DA00296BD1 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3224A264DA00296BD1 /* InfoButton.swift */; };
 		35D7DC3524A381A400296BD1 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7DC3424A381A400296BD1 /* StatisticView.swift */; };
 		35DE959024BAAB9400DE3D95 /* IntervalUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */; };
+		35DE959424BAB26000DE3D95 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE959324BAB26000DE3D95 /* AlertView.swift */; };
+		35DE959624BAB3F000DE3D95 /* FilteringRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE959524BAB3F000DE3D95 /* FilteringRepository.swift */; };
+		35F817D624BDBDD5003A5227 /* AIRecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F817D524BDBDD5003A5227 /* AIRecordUsecase.swift */; };
 		72774414FFE36F181EC1B1DC /* Pods_NegotoRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +104,9 @@
 		35D7DC3224A264DA00296BD1 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		35D7DC3424A381A400296BD1 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalUsecase.swift; sourceTree = "<group>"; };
+		35DE959324BAB26000DE3D95 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		35DE959524BAB3F000DE3D95 /* FilteringRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringRepository.swift; sourceTree = "<group>"; };
+		35F817D524BDBDD5003A5227 /* AIRecordUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRecordUsecase.swift; sourceTree = "<group>"; };
 		5220E444F9058C458C0E8897 /* Pods-NegotoRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.debug.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.debug.xcconfig"; sourceTree = "<group>"; };
 		8E3C611A0DD3C591C686F033 /* Pods_NegotoRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NegotoRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6869BB17E2BF69B33FCDADC /* Pods-NegotoRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NegotoRecorder.release.xcconfig"; path = "Target Support Files/Pods-NegotoRecorder/Pods-NegotoRecorder.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				35A7419A249CA928002417F1 /* button */,
 				35A74199249CA921002417F1 /* label */,
 				35B871F924A8C1C9005964F4 /* WebView.swift */,
+				35DE959324BAB26000DE3D95 /* AlertView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				35A741B9249F8EF8002417F1 /* AudioRecordRepository.swift */,
+				35DE959524BAB3F000DE3D95 /* FilteringRepository.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -303,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				35DE958F24BAAB9400DE3D95 /* IntervalUsecase.swift */,
+				35F817D524BDBDD5003A5227 /* AIRecordUsecase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -457,6 +466,7 @@
 				35A741AA249F373F002417F1 /* NegotoListViewController.swift in Sources */,
 				35A741BA249F8EF8002417F1 /* AudioRecordRepository.swift in Sources */,
 				35A741B0249F477E002417F1 /* NegotoCell.swift in Sources */,
+				35DE959424BAB26000DE3D95 /* AlertView.swift in Sources */,
 				35A741AC249F37A0002417F1 /* HeaderLabel.swift in Sources */,
 				35B871F424A894CE005964F4 /* SensibilityButton.swift in Sources */,
 				35D7DC2D24A1C1CC00296BD1 /* BackgroundUtils.swift in Sources */,
@@ -472,6 +482,8 @@
 				35A741B4249F4FE1002417F1 /* PlayButton.swift in Sources */,
 				35A741A7249F2F92002417F1 /* CommonUtils.swift in Sources */,
 				355E99B024ACBBFB001C26C8 /* AudioKindButton.swift in Sources */,
+				35DE959624BAB3F000DE3D95 /* FilteringRepository.swift in Sources */,
+				35F817D624BDBDD5003A5227 /* AIRecordUsecase.swift in Sources */,
 				35A74195249B6F61002417F1 /* MyColors.swift in Sources */,
 				355E99AE24ACB905001C26C8 /* AudioKind.swift in Sources */,
 				35B871F224A88D10005964F4 /* RecordState.swift in Sources */,

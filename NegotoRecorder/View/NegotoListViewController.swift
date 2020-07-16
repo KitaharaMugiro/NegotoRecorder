@@ -61,17 +61,15 @@ class NegotListViewController: UIViewController {
     
     fileprivate func updateTableAndStatistic(type: AudioKind = .negoto) {
         //DBからレコードを取得する
-        let repository = AudioRecordRepository()
-        let negotos = repository.getAllAvailableIntervals(suffix:50)
-        let allIntervals = repository.getAllIntervals()
-        statisticView.setText(monooto: allIntervals.count, negoto: negotos.count)
+        let usecase = IntervalUsecase()
+        let negotos = usecase.getNegotoIntervals()
+        let monooto = usecase.getMonootoIntervals()
+        statisticView.setText(monooto: monooto.count, negoto: negotos.count)
         
         if(type == .negoto) {
             self.intervals = negotos
         } else {
-            self.intervals = allIntervals.filter {a in
-                return a.title == ""
-            }
+            self.intervals = monooto
         }
         self.tableView.update()
         
@@ -85,64 +83,44 @@ class NegotListViewController: UIViewController {
 extension NegotListViewController: UITableViewDataSource {
     //Mark: セルの編集ができるようにする。
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let index = indexPath.section
+        let index = indexPath.row
         let interval = intervals[index]
         let usecase = IntervalUsecase()
         usecase.deleteInteval(id: interval.id)
+        intervals.remove(at: index)
         tableView.deleteRows(at: [indexPath], with: .fade)
+        if interval.title != "" {
+            let title = "wantFilter".localized
+            let message = String(format: "deleteTheWord".localized, interval.title)
+            AlertView.actionSheet(presenter: self, title: title, message: message) {
+                let usecase = IntervalUsecase()
+                usecase.addFilteringWord(title : interval.title)
+                let negoto = usecase.getNegotoIntervals()
+                self.intervals = negoto
+                self.tableView.update()
+            }
+        }
     }
     
     // There is just one row in every section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return intervals.count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return intervals.count
-     }
-    
-    // Set the spacing between sections
-      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-          return 20
-      }
-    
-    // Make the background color show through
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let headerView = UIView()
-         headerView.backgroundColor = UIColor.clear
-         return headerView
-     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // change neumorphicLayer?.cornerType according to its row position
-        let data = self.intervals[indexPath.section]
-
-        let type: EMTNeumorphicLayerCornerType = .all
-        let cellId = String(format: "cell%d", type.rawValue)
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
+        let data = self.intervals[indexPath.row]
+        let audioPlayer = AudioPlayer()
+        let cell = NegotoCell()
+        let seconds = Int(data.endTime - data.startTime)
+        cell.data =  NegotoCellData(title: data.title, date: data.createdAt , negotoId: data.id, fileName: data.filename, seconds: seconds)
+        cell.setPlayer(audioPlayer)
+        cell.setColor(view.backgroundColor ?? MyColors.theme)
+        cell.height(110)
+        cell.selectionStyle = .none;
         
-        cell = EMTNeumorphicTableCell(style: .default, reuseIdentifier: cellId) //毎回セルを作る
-        if cell == nil {
-            cell = EMTNeumorphicTableCell(style: .default, reuseIdentifier: cellId)
-        }
-        
-        if let cell = cell as? EMTNeumorphicTableCell {
-            let audioPlayer = AudioPlayer()
-            let _cell = NegotoCell()
-            let seconds = Int(data.endTime - data.startTime)
-            _cell.data =  NegotoCellData(title: data.title, date: data.createdAt , negotoId: data.id, fileName: data.filename, seconds: seconds)
-            _cell.setPlayer(audioPlayer)
-            
-            cell.addSubview(_cell)
-            _cell.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.bottomAnchor, right: cell.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-            cell.height(90)
-            cell.neumorphicLayer?.cornerType = type
-            cell.selectionStyle = .none;
-            cell.neumorphicLayer?.elementBackgroundColor = view.backgroundColor!.cgColor
-            cell.neumorphicLayer?.cornerRadius = 20
-            cell.neumorphicLayer?.elementDepth = 3
-        }
-        return cell!
+        return cell
   }
 }
 

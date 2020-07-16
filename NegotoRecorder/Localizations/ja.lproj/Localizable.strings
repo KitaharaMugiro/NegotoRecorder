@@ -10,3 +10,5 @@
 "monooto" = "物音";
 "negoto" = "寝言";
 "weAreRecognizingAudios" = "音声認識中...(残り:%@件)";
+"wantFilter" = "フィルタリングしますか？";
+"deleteTheWord" = "「%@」を全て非表示にしますか？";

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import EMTNeumorphicView
 
 struct NegotoCellData {
     var title:String
@@ -18,6 +19,13 @@ struct NegotoCellData {
 }
 
 class NegotoCell : UITableViewCell {
+    var baseView: EMTNeumorphicView = {
+        let view = EMTNeumorphicView()
+        view.neumorphicLayer?.cornerRadius = 20
+        view.neumorphicLayer?.elementDepth = 3
+        return view
+    }()
+    
     var data : NegotoCellData? {
         didSet{
             guard let _data = data else {return}
@@ -58,13 +66,18 @@ class NegotoCell : UITableViewCell {
         
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(titleLabel)
-        addSubview(dateLable)
-        addSubview(secondsLabel)
-        dateLable.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: secondsLabel.leftAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-        secondsLabel.anchor(top: topAnchor, left: dateLable.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 0, enableInsets: false)
-        titleLabel.anchor(top: dateLable.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: frame.size.width, height: 0, enableInsets: false)
-        playButton.setRightBottom(view: self, color: MyColors.theme.cgColor)
+        self.backgroundColor = .clear
+        
+        addSubview(baseView)
+        baseView.addSubview(titleLabel)
+        baseView.addSubview(dateLable)
+        baseView.addSubview(secondsLabel)
+        
+        
+        baseView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: frame.size.width, height: frame.size.height, enableInsets: false)
+        dateLable.anchor(top: baseView.topAnchor, left: baseView.leftAnchor, bottom: nil, right: secondsLabel.leftAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        secondsLabel.anchor(top: baseView.topAnchor, left: dateLable.rightAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 0, enableInsets: false)
+        titleLabel.anchor(top: dateLable.bottomAnchor, left: baseView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: baseView.frame.size.width, height: 0, enableInsets: false)
     }
     
     required init?(coder: NSCoder) {
@@ -80,4 +93,8 @@ class NegotoCell : UITableViewCell {
         player.preparePlay(fileName: d.fileName)
     }
     
+    func setColor(_ color : UIColor) {
+        baseView.neumorphicLayer?.elementBackgroundColor = color.cgColor
+        playButton.setRightBottom(view: self, color: color.cgColor)
+    }
 }

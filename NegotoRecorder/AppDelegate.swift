@@ -22,12 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        try! realm.write {
 //            realm.deleteAll()
 //        }
-        self.cleanAudioFiles()
         return true
-    }
-    
-    func cleanAudioFiles() {
-        self.cleaner.startClean()
     }
     
     func startProcessAudioRecognition() {

@@ -9,9 +9,14 @@
 import Foundation
 import UIKit
 import EMTNeumorphicView
+protocol RecordButtonDelegate:class {
+    func onClickStartRecord()
+    func onClickEndRecord()
+}
+
 class RecordButton  {
     var button : EMTNeumorphicButton
-    weak var recorder : AudioRecorder?
+    weak var delegate: RecordButtonDelegate?
     
     init() {
         let button = EMTNeumorphicButton(type: .custom)
@@ -41,16 +46,11 @@ class RecordButton  {
     @objc func tapped(_ button: EMTNeumorphicButton) {
         button.isSelected = !button.isSelected
         if button.isSelected {
-            recorder?.startRecord()
+            self.delegate?.onClickStartRecord()
             button.imageEdgeInsets = UIEdgeInsets(top: 30, left: 26, bottom: 25, right: 26)
         } else {
-            recorder?.stopRecord()
+            self.delegate?.onClickEndRecord()
             button.imageEdgeInsets = UIEdgeInsets(top: 26, left: 24, bottom: 22, right: 24)
         }
-    }
-    
-    func setRecorder(_ recorder: AudioRecorder) {
-        recorder.prepareRecord(fileName: "recording.m4a")
-        self.recorder = recorder
     }
 }

@@ -19,6 +19,7 @@ class NegotoDailyTable  {
         tableView.tableFooterView = UIView()
         tableView.register(EMTNeumorphicTableCell.self, forCellReuseIdentifier: "cell")
         tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         self.tableView = tableView
     }
     

@@ -18,6 +18,7 @@ class RecordViewController: UIViewController {
     
     lazy var button : RecordButton = {
         let button = RecordButton()
+        button.delegate = self
         return button
     }()
     
@@ -38,9 +39,7 @@ class RecordViewController: UIViewController {
         return view
     }()
     
-    private var audioRecorder = AudioRecorder()
-    private var watcher :RecordInputLevelWatcher? = nil
-    private var audioRecognizer : AudioRecognizer? = nil
+    private let aiRecordUsecase : AIRecordUsecase = AIRecordUsecase()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +49,11 @@ class RecordViewController: UIViewController {
         self.view.addSubview(stateMessage.getView())
         self.view.addSubview(sensibilityButtons.getView())
         
-        self.initializeDependency()
+        self.aiRecordUsecase.initializeDependency(delegate: self, audioDelegate: self, watcherDelegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.audioRecognizer?.requestAuth()
+        self.aiRecordUsecase.requestAuth()
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,20 +64,7 @@ class RecordViewController: UIViewController {
         stateMessage.setLayoutUpper(view: button.getView(), parent:self.view)
         sensibilityButtons.setLayoutUnder(view: button.getView(), width: self.view.frame.width)
     }
-    
-    fileprivate func initializeDependency() {
-        //set up models
-        self.audioRecorder.setDelegate(delegate: self, audioDelegate: self)
-        button.setRecorder(audioRecorder)
-        
-        self.watcher?.endWatch()
-        let watcher = RecordInputLevelWatcher(recorder: audioRecorder)
-        watcher.delegate = self
-        self.watcher = watcher
-        
-        let locale = NSLocale.current
-        self.audioRecognizer = AudioRecognizer(locale: locale,delegate: self)
-    }
+
 }
 
 
@@ -86,7 +72,6 @@ extension RecordViewController : AudioRecorderDelegate, AVAudioRecorderDelegate 
     func onStartRecord() {
         print("start recording")
         self.stateMessage.state = .listening
-        self.watcher?.startWatch()
     }
     
     func onFailRecord() {
@@ -97,36 +82,6 @@ extension RecordViewController : AudioRecorderDelegate, AVAudioRecorderDelegate 
     func onFinishRecord() {
         print("finish recording")
         self.stateMessage.state = .noop
-        let fileName = audioRecorder.getFileName()
-        guard let records = watcher?.exportRecord() else {return}
-                
-        print("will save records")
-        let repository = AudioRecordRepository()
-        repository.setAudioRecord(fileName: fileName, records: records)
-        print("saved records")
-        
-        //初期化
-        self.initializeDependency()
-        
-        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.startProcessAudioRecognition()
-    }
-}
-
-extension RecordViewController : AudioRecognizerDelegate {
-    
-    /** ここでは音声認識はしない */
-    func onFailRecognition(interval: ActivatedIntervalViewModel?) {
-    }
-    
-    func onSuccessRecognition(text: String, interval: ActivatedIntervalViewModel?) {
-    }
-    func skipRecognition() {
-    }
-    
-    /** request authをする */
-    func onFailRequestAuth() {
-        print("onFailRequestAuth")
     }
 }
 
@@ -142,12 +97,22 @@ extension RecordViewController: RecordInputLevelWatcherDelegate {
 
 extension RecordViewController: SensibilityHorizontalButtonsDelegate {
     func onTapped(type: SensibilityType) {
-        self.watcher?.setThreshhold(value: type.getDecibelValue())
+        self.aiRecordUsecase.setSensibility(value: type)
     }
 }
 
 extension RecordViewController: InfoButtonDelegate {
     func onTappedInfo() {
         self.present(TermsViewController(), animated: true, completion: nil)
+    }
+}
+
+extension RecordViewController : RecordButtonDelegate {
+    func onClickStartRecord() {
+        self.aiRecordUsecase.startRotation()
+    }
+    
+    func onClickEndRecord() {
+        self.aiRecordUsecase.endRotation()
     }
 }

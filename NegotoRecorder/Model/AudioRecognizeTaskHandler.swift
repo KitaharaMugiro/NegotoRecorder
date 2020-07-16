@@ -23,6 +23,7 @@ class AudioRecognizeTaskHandler {
          */
         guard let interval = seeIfAudioIsRecognized() else {return}
         guard let originalFilename = getOriginalFilename(interval) else {return}
+        print("filename = \(interval.filename)")
         print("startTime = \(interval.startTime)")
         
         print("will trim audio files")
@@ -46,6 +47,8 @@ class AudioRecognizeTaskHandler {
             print("no more unrecognized sound")
             return nil
         } else {
+            print("find unrecognized sound = \(intervals.count)")
+            print(intervals[0])
             return intervals[0]
         }
     }
@@ -73,6 +76,7 @@ extension AudioRecognizeTaskHandler: AudioRecognizerDelegate {
         
         let repository = AudioRecordRepository()
         repository.updateIntervalTitle(interval: _interval)
+        print("updated for nothing")
         self.processAudioRecognition()
     }
     

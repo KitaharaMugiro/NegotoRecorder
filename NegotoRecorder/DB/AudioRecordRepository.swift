@@ -53,6 +53,8 @@ class AudioRecordRepository {
         try! realm.write {
             intervalRealm!.title = interval.title
             intervalRealm!.isRecognized = true
+            print("updated")
+            print(intervalRealm)
         }
     }
     
@@ -83,9 +85,7 @@ class AudioRecordRepository {
                 return interval.isRecognized && interval.title != ""
             }
         }
-        return result.suffix(suffix).sorted(by: {a,b in
-            return a.createdAt > b.createdAt
-        })
+        return result.suffix(suffix)
     }
     
     func getNotRecognizedIntervals() -> [ActivatedIntervalViewModel] {
@@ -123,9 +123,11 @@ class AudioRecordRepository {
     }
     
     private func recordsToRealmObjects(records: [AudioActivatedInterval], id:String) -> List<ActivatedIntervalRealm> {
+        print("recordsToRealmObjects")
         let list = List<ActivatedIntervalRealm>()
         for record in records {
             if  let endTime = record.endTime {
+                print("set audioRecordId = \(id)")
                 let elem = ActivatedIntervalRealm()
                 elem.id = record.id
                 elem.audioRecordId = id

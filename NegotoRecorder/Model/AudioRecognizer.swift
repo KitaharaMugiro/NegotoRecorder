@@ -71,6 +71,7 @@ extension AudioRecognizer: SFSpeechRecognitionTaskDelegate {
     func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool){
         print("finish recognition successfully = \(successfully)")
         if !successfully {
+            print(task.error)
             if let _error = task.error as? AVError {
                 if _error.code.rawValue == -11829 {
                     print("Cannot Open!")
