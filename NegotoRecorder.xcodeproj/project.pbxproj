@@ -335,7 +335,6 @@
 				0024A7324D6CBA9CC73DB571 /* [CP] Check Pods Manifest.lock */,
 				3501A714249AE6300098322E /* Sources */,
 				3501A715249AE6300098322E /* Frameworks */,
-				35DE958D24B8DBF500DE3D95 /* increment version */,
 				3501A716249AE6300098322E /* Resources */,
 				4C12F8B729B69E97DF688734 /* [CP] Embed Pods Frameworks */,
 			);
@@ -418,24 +417,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		35DE958D24B8DBF500DE3D95 /* increment version */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "increment version";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "build_number=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuild_number=$(($build_number + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $build_number\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		4C12F8B729B69E97DF688734 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -650,6 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NegotoRecorder/Preview Content\"";
 				DEVELOPMENT_TEAM = 54NDTXK5D8;
 				ENABLE_PREVIEWS = YES;
@@ -658,7 +640,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
 				PRODUCT_NAME = AIRecorder;
 				SWIFT_VERSION = 5.0;
@@ -672,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NegotoRecorder/Preview Content\"";
 				DEVELOPMENT_TEAM = 54NDTXK5D8;
 				ENABLE_PREVIEWS = YES;
@@ -680,7 +663,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = chen.NegotoRecorder;
 				PRODUCT_NAME = AIRecorder;
 				SWIFT_VERSION = 5.0;

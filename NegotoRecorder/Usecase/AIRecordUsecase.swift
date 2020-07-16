@@ -22,7 +22,7 @@ class AIRecordUsecase {
         
         //timer setup
         self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 3000, repeats: true) { _ in
             self.refreshRecord()
         }
     }

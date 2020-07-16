@@ -20,6 +20,10 @@ class ActivatedIntervalRealm: Object {
     @objc dynamic var title : String = ""
     @objc dynamic var isRecognized: Bool = false
     @objc dynamic var createdAt = Date()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
     
@@ -50,6 +54,7 @@ class AudioRecordRepository {
     func updateIntervalTitle(interval:ActivatedIntervalViewModel) {
         let realm = try! Realm()
         let intervalRealm = realm.objects(ActivatedIntervalRealm.self).filter("id == %@", interval.id).first
+        print("is it true? = \(intervalRealm?.id) == \(interval.id) (\(intervalRealm!.id == interval.id)")
         try! realm.write {
             intervalRealm!.title = interval.title
             intervalRealm!.isRecognized = true

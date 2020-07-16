@@ -70,6 +70,7 @@ class RecordInputLevelWatcher {
         self.isRecording = true
         let startTime = max(self.recorder.getCurrentTime() - watchInterval, 0)
         self.audioActivatedInterval = AudioActivatedInterval(startTime:  startTime, createdAt: Date())
+        print(self.audioActivatedInterval?.id)
     }
     
     private func deactivateRecord() {
@@ -83,10 +84,12 @@ class RecordInputLevelWatcher {
     }
     
     func exportRecord() -> [AudioActivatedInterval] {
-        return self.audioActivatedIntervalRecord.filter({interval in
+        let result = self.audioActivatedIntervalRecord.filter({interval in
             guard let endTime = interval.endTime else {return false}
             return endTime > interval.startTime
         })
+        self.audioActivatedIntervalRecord = []
+        return result
     }
     
     func setThreshhold(value : Float) {
