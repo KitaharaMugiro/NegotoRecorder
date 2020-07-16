@@ -73,11 +73,7 @@ extension AudioRecognizer: SFSpeechRecognitionTaskDelegate {
         if !successfully {
             print(task.error)
             if let _error = task.error as? AVError {
-                if _error.code.rawValue == -11829 {
-                    print("Cannot Open!")
-                    self.delegate.skipRecognition()
-                    return
-                } else if _error.code.rawValue == 202 {
+                if _error.code.rawValue == 202 {
                     print("Rate Limits!!")
                     self.delegate.skipRecognition()
                     return

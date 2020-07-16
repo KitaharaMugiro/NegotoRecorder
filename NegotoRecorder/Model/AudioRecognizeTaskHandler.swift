@@ -29,7 +29,7 @@ class AudioRecognizeTaskHandler {
         print("will trim audio files")
         let avAsset = CommonUtils.getAvAsset(fileName: originalFilename)
         let trimmer = AudioTrimmer()
-        trimmer.trimAudio(asset: avAsset, startTime: interval.startTime, stopTime: interval.endTime, fileName: interval.id + Constants.audioPrefix, finished: {url in
+        trimmer.trimAudio(asset: avAsset, startTime: interval.startTime, stopTime: interval.endTime, fileName: interval.filename, finished: {url in
             print("successfully trim and save \(url)")
             self.audioRecognizer.recognize(interval: interval)
         })
